@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyKohi | The Growth Engine for Mental Health Practices</title>
+    <meta name="description" content="Elite marketing & operational intelligence for TMS & Ketamine clinics.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Syne', 'sans-serif'],
+                        mono: ['Space Grotesk', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        accent: {
+                            purple: '#8b5cf6',
+                            teal: '#14b8a6',
+                            rose: '#f43f5e'
+                        }
+                    },
+                    backgroundImage: {
+                        'grid-slate': "linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px)",
+                        'mesh': "radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%)",
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"noiseFilter\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.65\" numOctaves=\"3\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23noiseFilter)\" opacity=\"0.05\"/%3E%3C/svg%3E')"
+                    },
+                    animation: {
+                        'scroll': 'scroll 40s linear infinite',
+                        'float': 'float 8s ease-in-out infinite',
+                        'spin-slow': 'spin 15s linear infinite',
+                        'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
+                        'reveal': 'reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: 0.8, transform: 'scale(1)' },
+                            '50%': { opacity: 0.4, transform: 'scale(1.1)' },
+                        },
+                        reveal: {
+                            '0%': { opacity: 0, transform: 'translateY(40px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-panel {
+                @apply bg-white/70 backdrop-blur-xl border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)];
+            }
+            .glass-card {
+                @apply bg-white/40 backdrop-blur-lg border border-white/60 hover:bg-white/60 transition-all duration-500;
+            }
+            .text-outline {
+                -webkit-text-stroke: 1px rgba(0,0,0,0.1);
+                color: transparent;
+            }
+            .clip-diagonal {
+                clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+        }
+        
+        .hero-title-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #334155 50%, #0ea5e9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-auto-rows: minmax(180px, auto);
+            gap: 1.5rem;
+        }
+
+        .card-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .card-shimmer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+            transform: skewX(-20deg) translateX(-150%);
+            transition: transform 0.5s;
+        }
+        .card-shimmer:hover::after {
+            transform: skewX(-20deg) translateX(150%);
+            transition: transform 1s;
+        }
+    </style>
+</head>
+
+<body class="bg-[#f8fafc] text-slate-800 antialiased overflow-x-hidden selection:bg-brand-500 selection:text-white">
+
+    <!-- Background Elements -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div class="absolute inset-0 bg-grid-slate bg-[size:50px_50px] opacity-40"></div>
+        <div
+            class="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-brand-200/40 to-purple-200/40 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-teal-200/40 to-blue-200/40 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3">
+        </div>
+        <div class="absolute inset-0 bg-noise opacity-30 mix-blend-overlay"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 top-0">
+        <div class="absolute inset-0 bg-white/70 backdrop-blur-xl border-b border-white/40"></div>
+        <div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between relative z-10">
+            <a href="#" class="flex items-center gap-2 group">
+                <img src="https://img1.wsimg.com/isteam/ip/f791d9b9-2f6c-4539-b9b3-61b4c8a8a446/Blue%20Minimalist%20Brain%20Bulb%20Logo%20Transparent.png/:/rs=w:206,h:206,cg:true,m/cr=w:206,h:206/qt=q:95"
+                    alt="logo" class="h-16">
+            </a>
+
+            <div
+                class="hidden lg:flex items-center gap-1 bg-slate-100/50 p-1.5 rounded-full border border-slate-200/60 backdrop-blur-sm">
+                <a href="#solutions"
+                    class="px-6 py-2.5 rounded-full text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white hover:shadow-sm transition-all">Solutions</a>
+                <a href="#methodology"
+                    class="px-6 py-2.5 rounded-full text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white hover:shadow-sm transition-all">Methodology</a>
+                <a href="#team"
+                    class="px-6 py-2.5 rounded-full text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white hover:shadow-sm transition-all">Experts</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="tel:18334695644" class="hidden xl:flex flex-col items-end mr-2 group">
+                    <span
+                        class="text-[10px] uppercase tracking-wider font-bold text-slate-400 group-hover:text-brand-600 transition-colors">24/7
+                        Support</span>
+                    <span class="font-mono font-bold text-sm text-slate-900">1-833-4MY-KOHI</span>
+                </a>
+                <a href="#contact"
+                    class="hidden md:flex items-center gap-3 px-6 py-3 bg-slate-900 text-white rounded-xl font-medium hover:bg-slate-800 hover:gap-4 transition-all duration-300 shadow-xl shadow-slate-900/20">
+                    <span>Contact us</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative  pt-24 pb-10 flex items-center overflow-hidden">
+        <div class="max-w-[1500px] mx-auto px-6 grid lg:grid-cols-12 gap-16 items-center relative z-10">
+            <!-- Left Content -->
+            <div class="lg:col-span-7 space-y-10 animate-reveal">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-200 bg-brand-50/50 backdrop-blur-sm shadow-sm">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+                    </span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand-700 font-mono">Accepting New
+                        Partners for Q1 2026</span>
+                </div>
+
+                <h1 class="text-5xl md:text-7xl xl:text-6xl font-display font-extrabold leading-[0.95] tracking-tight">
+                    The Growth <br />
+                    <span class="hero-title-gradient">Engine For</span> <br />
+                    <span class="relative inline-block">
+                        <span class="relative z-10">Clinics.</span>
+                        <div class="absolute bottom-2 left-0 w-full h-6 bg-brand-200/60 -skew-x-6 -z-0"></div>
+                    </span>
+                </h1>
+
+                <p class="text-xl text-slate-500 max-w-2xl font-light leading-relaxed border-l-4 border-slate-200 pl-6">
+                    We architect elite marketing ecosystems for TMS & Ketamine practices. Stop chasing leads. Start
+                    building a waitlist.
+                </p>
+
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#contact"
+                        class="group relative px-8 py-4 bg-slate-900 text-white rounded-2xl font-bold overflow-hidden shadow-2xl shadow-brand-900/20 hover:scale-[1.02] transition-transform duration-300">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-brand-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                        <span class="relative z-10 flex items-center gap-3">
+                            Call Now
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <a href="#solutions"
+                        class="group px-8 py-4 bg-white border border-slate-200 text-slate-700 rounded-2xl font-bold hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm flex items-center gap-3">
+                        <div
+                            class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center group-hover:rotate-180 transition-transform duration-700">
+                            <svg class="w-3 h-3 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                            </svg>
+                        </div>
+                        Get a quote
+                    </a>
+                </div>
+
+                <div class="pt-8 flex items-center gap-6 text-sm font-medium text-slate-400">
+                    <span>Trusted by:</span>
+                    <div class="flex gap-6 opacity-60">
+                        <span class="text-slate-900 font-display font-bold text-lg">KarmaTMS</span>
+                        <span class="text-slate-900 font-display font-bold text-lg">OptionsPA</span>
+                        <span class="text-slate-900 font-display font-bold text-lg">Turnwell</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Visual -->
+            <div class="lg:col-span-5   w-full  ">
+                <img src="https://i.pinimg.com/1200x/e1/a0/d4/e1a0d405c4d131b474449ab205e1a04c.jpg" alt="tms"
+                    class="rounded-3xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="relative bg-slate-900 py-6 overflow-hidden border-y border-slate-800">
+        <div class="absolute inset-0 bg-slate-900 z-10 w-20 bg-gradient-to-r from-slate-900 to-transparent"></div>
+        <div
+            class="absolute inset-0 right-0 left-auto bg-slate-900 z-10 w-20 bg-gradient-to-l from-slate-900 to-transparent">
+        </div>
+
+        <div class="flex whitespace-nowrap animate-scroll">
+            <span class="text-2xl font-display font-bold text-white/20 mx-8 uppercase tracking-widest">Client
+                Acquisition</span>
+            <span class="text-2xl font-display font-bold text-white/50 mx-8 uppercase tracking-widest">★</span>
+            <span class="text-2xl font-display font-bold text-white/20 mx-8 uppercase tracking-widest">Practice
+                Consulting</span>
+            <span class="text-2xl font-display font-bold text-white/50 mx-8 uppercase tracking-widest">★</span>
+            <span class="text-2xl font-display font-bold text-white/20 mx-8 uppercase tracking-widest">Revenue
+                Optimization</span>
+            <span class="text-2xl font-display font-bold text-white/50 mx-8 uppercase tracking-widest">★</span>
+            <span class="text-2xl font-display font-bold text-white/20 mx-8 uppercase tracking-widest">Staff
+                Training</span>
+            <span class="text-2xl font-display font-bold text-white/50 mx-8 uppercase tracking-widest">★</span>
+            <!-- Repeat for seamless loop -->
+            <span class="text-2xl font-display font-bold text-white/20 mx-8 uppercase tracking-widest">Client
+                Acquisition</span>
+            <span class="text-2xl font-display font-bold text-white/50 mx-8 uppercase tracking-widest">★</span>
+            <span class="text-2xl font-display font-bold text-white/20 mx-8 uppercase tracking-widest">Practice
+                Consulting</span>
+            <span class="text-2xl font-display font-bold text-white/50 mx-8 uppercase tracking-widest">★</span>
+            <span class="text-2xl font-display font-bold text-white/20 mx-8 uppercase tracking-widest">Revenue
+                Optimization</span>
+            <span class="text-2xl font-display font-bold text-white/50 mx-8 uppercase tracking-widest">★</span>
+            <span class="text-2xl font-display font-bold text-white/20 mx-8 uppercase tracking-widest">Staff
+                Training</span>
+            <span class="text-2xl font-display font-bold text-white/50 mx-8 uppercase tracking-widest">★</span>
+        </div>
+    </div>
+
+    <!-- Bento Grid Services -->
+    <section id="solutions" class="py-32 relative">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="mb-20 max-w-2xl">
+                <span class="text-brand-600 font-mono font-bold uppercase tracking-widest text-xs mb-4 block">Our
+                    Ecosystem</span>
+                <h2 class="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-6">Holistic Growth
+                    <br />Infrastructure.
+                </h2>
+                <p class="text-slate-500 text-lg">We don't just "do marketing." We build the entire infrastructure
+                    required for a modern mental health practice to scale.</p>
+            </div>
+
+            <div class="bento-grid">
+                <!-- Large Feature -->
+                <div
+                    class="col-span-1 md:col-span-2 row-span-2 rounded-[2rem] bg-white border border-slate-200 p-10 shadow-xl overflow-hidden card-shimmer group relative">
+                    <div class="relative z-10 h-full flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-slate-900 text-white flex items-center justify-center mb-6">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-3xl font-display font-bold text-slate-900 mb-4">Patient Acquisition Engine
+                            </h3>
+                            <p class="text-slate-500 leading-relaxed max-w-sm">We deploy high-intent campaigns across
+                                search and social specifically tuned to TMS & Spravato nuances. We filter for qualified
+                                candidates, not just tire-kickers.</p>
+                        </div>
+                        <a href="#"
+                            class="inline-flex items-center gap-2 text-slate-900 font-bold mt-8 group-hover:gap-4 transition-all">Learn
+                            More <span
+                                class="bg-brand-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">&rarr;</span></a>
+                    </div>
+                    <div
+                        class="absolute right-0 bottom-0 w-1/2 h-full bg-gradient-to-l from-brand-50 via-white to-transparent opacity-50 z-0">
+                    </div>
+                    <img src="https://i.pinimg.com/1200x/12/13/c8/1213c899397cb54dbba55ff5787140b1.jpg"
+                        class="absolute right-0 bottom-0 w-1/2 h-2/4 object-cover rounded-tl-[2rem] translate-x-10 translate-y-10 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-700  "
+                        alt="Analytics">
+                </div>
+
+                <!-- Tall Feature -->
+                <div
+                    class="col-span-1 row-span-2 rounded-[2rem] bg-slate-900 text-white p-8 shadow-xl overflow-hidden relative group">
+                    <div
+                        class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')] opacity-20 bg-cover bg-center">
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold mb-4">Operations &<br />Efficiency</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Front-desk scripting, intake
+                            optimization, and EMR consulting. We fix the leaky bucket.</p>
+
+                        <div class="mt-8 space-y-3">
+                            <div class="flex items-center gap-3 text-sm text-slate-300">
+                                <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span> Intake Training
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-slate-300">
+                                <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span> Billing Review
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-slate-300">
+                                <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span> EMR Setup
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Small Feature -->
+                <div
+                    class="col-span-1 rounded-[2rem] bg-white border border-slate-200 p-8 shadow-lg hover:-translate-y-1 transition-transform cursor-pointer group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center mb-4 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">HIPAA Compliant</h3>
+                    <p class="text-slate-500 text-sm">Secure, aligned marketing that keeps your license safe.</p>
+                </div>
+
+                <!-- Small Feature -->
+                <div
+                    class="col-span-1 rounded-[2rem] bg-white border border-slate-200 p-8 shadow-lg hover:-translate-y-1 transition-transform cursor-pointer group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center mb-4 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Clinical Expertise</h3>
+                    <p class="text-slate-500 text-sm">Founded by doctors, for doctors. We speak your language.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Team Section (Innovative Layout) -->
+    <section id="team" class="py-10 bg-slate-100 overflow-hidden relative">
+        <div class="absolute inset-0 bg-white/50 backdrop-blur-3xl z-0"></div>
+        <div class="max-w-[1400px] mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-20">
+                <div class="lg:w-1/3">
+                    <div class="sticky top-32">
+                        <h2 class="text-5xl font-display font-bold text-slate-900 mb-8 leading-tight">Led By
+                            <br />Visionaries.
+                        </h2>
+                        <p class="text-lg text-slate-500 mb-8">
+                            A leadership team that combines clinical excellence with Fortune 500 business acumen.
+                        </p>
+                        <a href="#contact"
+                            class="text-slate-900 font-bold underline decoration-brand-500 decoration-2 underline-offset-4 hover:decoration-4 transition-all">Meet
+                            the whole team</a>
+                    </div>
+                </div>
+
+                <div class="lg:w-2/3 grid gap-8">
+                    <!-- Member Card 1 -->
+                    <div
+                        class="group relative bg-white rounded-[2rem] p-8 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col sm:flex-row gap-8 items-start">
+                        <div class="w-32 h-32 shrink-0 rounded-2xl overflow-hidden relative">
+                            <img src="https://ui-avatars.com/api/?name=Karan+Narwal&background=0ea5e9&color=fff&size=200"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-2xl font-display font-bold text-slate-900">Dr. Karan Narwal</h3>
+                                <svg class="w-6 h-6 text-slate-300 group-hover:text-brand-600 transition-colors"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg>
+                            </div>
+                            <p class="text-brand-600 font-mono text-sm uppercase tracking-wide mb-4">Founder & President
+                            </p>
+                            <p class="text-slate-500 leading-relaxed mb-4">
+                                Clinical researcher, treatment specialist, and business executive. Dr. Narwal built one
+                                of Tampa Bay’s leading mental health centers, delivering 15,000+ treatments.
+                            </p>
+                            <div class="flex gap-2 text-xs font-bold text-slate-400">
+                                <span class="px-3 py-1 bg-slate-100 rounded-full">TMS Specialist</span>
+                                <span class="px-3 py-1 bg-slate-100 rounded-full">MD</span>
+                                <span class="px-3 py-1 bg-slate-100 rounded-full">Innovator</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Member Card 2 -->
+                    <div
+                        class="group relative bg-white rounded-[2rem] p-8 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col sm:flex-row gap-8 items-start">
+                        <div class="w-32 h-32 shrink-0 rounded-2xl overflow-hidden relative">
+                            <img src="https://ui-avatars.com/api/?name=Brian+Goldbeck&background=6366f1&color=fff&size=200"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-2xl font-display font-bold text-slate-900">Brian Goldbeck</h3>
+                                <svg class="w-6 h-6 text-slate-300 group-hover:text-brand-600 transition-colors"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg>
+                            </div>
+                            <p class="text-indigo-600 font-mono text-sm uppercase tracking-wide mb-4">Co-Founder, CEO
+                            </p>
+                            <p class="text-slate-500 leading-relaxed mb-4">
+                                Decades of expertise in sales, business development, and client success. Brian focuses
+                                on driving measurable revenue growth for clinics.
+                            </p>
+                            <div class="flex gap-2 text-xs font-bold text-slate-400">
+                                <span class="px-3 py-1 bg-slate-100 rounded-full">Growth</span>
+                                <span class="px-3 py-1 bg-slate-100 rounded-full">Strategy</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Member Card 3 - Compact -->
+                    <div class="grid sm:grid-cols-2 gap-8">
+                        <div
+                            class="bg-white rounded-[2rem] p-6 shadow-sm hover:shadow-xl transition-all border border-slate-100 group">
+                            <div class="flex items-center gap-4 mb-4">
+                                <img src="https://ui-avatars.com/api/?name=Stephanie+Goldbeck&background=8b5cf6&color=fff"
+                                    class="w-16 h-16 rounded-full">
+                                <div>
+                                    <h3 class="font-bold text-slate-900">Stephanie Goldbeck</h3>
+                                    <p class="text-xs text-purple-600 font-bold uppercase">COO & CMO</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-500">Operational perfectionist ensuring your campaigns
+                                encompass the full patient journey.</p>
+                        </div>
+                        <div
+                            class="bg-white rounded-[2rem] p-6 shadow-sm hover:shadow-xl transition-all border border-slate-100 group">
+                            <div class="flex items-center gap-4 mb-4">
+                                <img src="https://ui-avatars.com/api/?name=Mae+Ann+Mitchell&background=14b8a6&color=fff"
+                                    class="w-16 h-16 rounded-full">
+                                <div>
+                                    <h3 class="font-bold text-slate-900">Mae Ann Mitchell</h3>
+                                    <p class="text-xs text-teal-600 font-bold uppercase">Coordinator</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-500">The glue of our operations, ensuring seamless
+                                implementation of all client strategies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Impact CTA -->
+    <section id="contact" class="relative py-20 overflow-hidden bg-[#0a0f1d] text-white">
+        <!-- Abstract Glows -->
+        <div class="absolute inset-0 z-0">
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-brand-500/20 rounded-full blur-[150px] animate-pulse-glow">
+            </div>
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+            <h2
+                class="text-5xl md:text-8xl font-display font-black tracking-tighter mb-8 leading-none bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40">
+                SCALE NOW.
+            </h2>
+            <p class="text-xl md:text-2xl text-slate-400 font-light mb-12 max-w-2xl mx-auto">
+                The market is evolving. Is your practice keeping up?
+                <br>Partner with the team that defines the standard.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                <a href="https://d5jy4m04.na1.hs-sales-engage.com/Ctc/5I+23284/d5JY4M04/JkM2-6qcW6N1vHY6lZ3kLW44DLfQ8FY70XN4skwkvVR5fYW8VP91F4qPlMXW4D15q71NzQWYW5sNHpg1Bmn8fW7KTYD557nZ7qW4QhMxp8c4q79W1VxHff8z3_MRW1q72cb3BHJdnW353_HB4PZ8l1W3ZcDsq2hYG4rW3gc4r35S76DsW86jXQZ7lNsg5W1-D_vc7zKlFLW84--tw1vRhkwW3mxpwM7CJ80GW4-8TyT2KlN2jW92w69h7hmDmJW6Zq_vq7DRnThW7Dt_tk673GSqMKRqSfXxLvfW8sCNgg1gjqt_f4Xy3jR04"
+                    class="px-12 py-5 bg-brand-600 hover:bg-brand-500 text-white rounded-full font-bold text-lg shadow-[0_0_50px_rgba(14,165,233,0.4)] hover:shadow-[0_0_70px_rgba(14,165,233,0.6)] transition-all transform hover:-translate-y-1">
+                    Book Executive Consultation
+                </a>
+                <div class="flex items-center gap-3 text-sm">
+                    <span class="text-slate-500">or call</span>
+                    <a href="tel:18334695644"
+                        class="group flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full transition-all">
+                        <svg class="w-4 h-4 text-brand-400 group-hover:rotate-12 transition-transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                            </path>
+                        </svg>
+                        <span class="text-white font-mono font-bold tracking-wide">1-833-4MY-KOHI</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white border-t border-white/10 pt-20 pb-10">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12">
+                <div>
+                    <a href="#" class="font-display font-bold text-3xl tracking-tight mb-4 block"><img
+                            src="https://img1.wsimg.com/isteam/ip/f791d9b9-2f6c-4539-b9b3-61b4c8a8a446/Blue%20Minimalist%20Brain%20Bulb%20Logo%20Transparent.png/:/rs=w:206,h:206,cg:true,m/cr=w:206,h:206/qt=q:95"
+                            alt="" class="h-24"></a>
+                    <p class="text-slate-500 max-w-xs">
+                        Empowering the next generation of mental health care with elite operational and marketing
+                        intelligence.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-16 text-sm">
+                    <div>
+                        <h4 class="font-bold mb-4 text-slate-300">Platform</h4>
+                        <ul class="space-y-2 text-slate-600">
+                            <li><a href="#" class="hover:text-white transition-colors">Methodology</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Case Studies</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Pricing</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-4 text-slate-300">Company</h4>
+                        <ul class="space-y-2 text-slate-600">
+                            <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Legal</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-slate-700">
+                <p>&copy; 2026 MyKohi Consulting. All Rights Reserved.</p>
+                <p>Designed for Excellence.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
