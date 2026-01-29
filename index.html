@@ -186,42 +186,50 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative  pt-24 pb-10 flex items-center overflow-hidden">
-        <div class="max-w-[1500px] mx-auto px-6 grid lg:grid-cols-12 gap-16 items-center relative z-10">
+    <section
+        class="relative pt-28 md:pt-32 lg:pt-24 pb-12 md:pb-16 lg:pb-10 flex items-center overflow-hidden min-h-[calc(100vh-5rem)] md:min-h-0">
+        <div
+            class="max-w-[1500px] mx-auto px-4 sm:px-6 grid lg:grid-cols-12 md:gap-8 md:gap-12 lg:gap-16 items-center relative z-10">
             <!-- Left Content -->
-            <div class="lg:col-span-7 space-y-10 animate-reveal">
+            <div class="lg:col-span-7 space-y-6 md:space-y-8 lg:space-y-10 animate-reveal">
                 <div
-                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-200 bg-brand-50/50 backdrop-blur-sm shadow-sm">
+                    class="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-brand-200 bg-brand-50/50 backdrop-blur-sm shadow-sm">
                     <span class="relative flex h-2 w-2">
                         <span
                             class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
                     </span>
-                    <span class="text-xs font-bold uppercase tracking-widest text-brand-700 font-mono">Accepting New
+                    <span
+                        class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-700 font-mono">Accepting
+                        New
                         Partners for Q1 2026</span>
                 </div>
 
-                <h1 class="text-5xl md:text-7xl xl:text-6xl font-display font-extrabold leading-[0.95] tracking-tight">
+                <h1
+                    class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-6xl font-display font-extrabold leading-[0.95] tracking-tight">
                     The Growth <br />
                     <span class="hero-title-gradient">Engine For</span> <br />
                     <span class="relative inline-block">
                         <span class="relative z-10">Clinics.</span>
-                        <div class="absolute bottom-2 left-0 w-full h-6 bg-brand-200/60 -skew-x-6 -z-0"></div>
+                        <div
+                            class="absolute bottom-1 md:bottom-2 left-0 w-full h-4 md:h-6 bg-brand-200/60 -skew-x-6 -z-0">
+                        </div>
                     </span>
                 </h1>
 
-                <p class="text-xl text-slate-500 max-w-2xl font-light leading-relaxed border-l-4 border-slate-200 pl-6">
+                <p
+                    class="text-base md:text-lg lg:text-xl text-slate-500 max-w-2xl font-light leading-relaxed border-l-4 border-slate-200 pl-4 md:pl-6">
                     We architect elite marketing ecosystems for TMS & Ketamine practices. Stop chasing leads. Start
                     building a waitlist.
                 </p>
 
-                <div class="flex flex-wrap gap-4 pt-4">
+                <div class="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 pt-2 md:pt-4">
                     <a href="#contact"
-                        class="group relative px-8 py-4 bg-slate-900 text-white rounded-2xl font-bold overflow-hidden shadow-2xl shadow-brand-900/20 hover:scale-[1.02] transition-transform duration-300">
+                        class="group relative px-6 md:px-8 py-3 md:py-4 bg-slate-900 text-white rounded-2xl font-bold overflow-hidden shadow-2xl shadow-brand-900/20 hover:scale-[1.02] transition-transform duration-300 text-center">
                         <div
                             class="absolute inset-0 bg-gradient-to-r from-brand-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         </div>
-                        <span class="relative z-10 flex items-center gap-3">
+                        <span class="relative z-10 flex items-center justify-center gap-3">
                             Call Now
                             <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
@@ -232,7 +240,7 @@
                     </a>
 
                     <a href="#solutions"
-                        class="group px-8 py-4 bg-white border border-slate-200 text-slate-700 rounded-2xl font-bold hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm flex items-center gap-3">
+                        class="group px-6 md:px-8 py-3 md:py-4 bg-white border border-slate-200 text-slate-700 rounded-2xl font-bold hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm flex items-center justify-center gap-3">
                         <div
                             class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center group-hover:rotate-180 transition-transform duration-700">
                             <svg class="w-3 h-3 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -244,19 +252,21 @@
                     </a>
                 </div>
 
-                <div class="pt-8 flex items-center gap-6 text-sm font-medium text-slate-400">
+                <div
+                    class="pt-4 md:pt-8 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 text-xs md:text-sm font-medium text-slate-400">
                     <span>Trusted by:</span>
-                    <div class="flex gap-6 opacity-60">
-                        <span class="text-slate-900 font-display font-bold text-lg">KarmaTMS</span>
-                        <span class="text-slate-900 font-display font-bold text-lg">OptionsPA</span>
-                        <span class="text-slate-900 font-display font-bold text-lg">Turnwell</span>
+                    <div class="flex flex-wrap gap-4 md:gap-6 opacity-60">
+                        <span class="text-slate-900 font-display font-bold text-base md:text-lg">KarmaTMS</span>
+                        <span class="text-slate-900 font-display font-bold text-base md:text-lg">OptionsPA</span>
+                        <span class="text-slate-900 font-display font-bold text-base md:text-lg">Turnwell</span>
                     </div>
                 </div>
             </div>
 
             <!-- Right Visual -->
-            <div class="lg:col-span-5 w-full">
-                <img src="home2.png" alt="tms" class="rounded-3xl h-[600px]">
+            <div class="lg:col-span-5 w-full md:mt-8 lg:mt-0">
+                <img src="home2.png" alt="TMS Marketing Dashboard"
+                    class="rounded-2xl md:rounded-3xl w-full h-auto max-h-[400px] md:max-h-[500px] lg:h-[600px] object-cover">
             </div>
         </div>
     </section>
@@ -1111,7 +1121,7 @@
 
     <!-- Visual Impact CTA -->
     <section id="contact"
-        class="relative py-10 container max-w-[1400px] mx-auto rounded-[4rem] overflow-hidden bg-[#0a0f1d] text-white mb-10">
+        class="relative py-10 container max-w-[1400px] mx-auto md:rounded-[4rem] overflow-hidden bg-[#0a0f1d] text-white md:mb-10">
         <!-- Abstract Glows -->
         <div class="absolute inset-0 z-0">
             <div
