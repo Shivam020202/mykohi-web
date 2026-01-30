@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Development | MyKohi - Comprehensive Consulting for Excellence</title>
+    <meta name="description"
+        content="Comprehensive consulting for operational excellence. Clinic assessment, provider training, intake optimization, and referral network strategies.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Syne', 'sans-serif'],
+                        mono: ['Space Grotesk', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        accent: {
+                            purple: '#8b5cf6',
+                            teal: '#14b8a6',
+                            rose: '#f43f5e'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 8s ease-in-out infinite',
+                        'reveal': 'reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        reveal: {
+                            '0%': { opacity: 0, transform: 'translateY(40px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .section-reveal {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section-reveal.animate {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .section-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #334155 50%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="bg-[#f8fafc] text-slate-800 antialiased overflow-x-hidden">
+
+    <!-- Fixed Background -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div
+            class="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:50px_50px]">
+        </div>
+        <div
+            class="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-purple-200/30 to-brand-200/30 rounded-full blur-[100px]">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-teal-200/30 to-blue-200/30 rounded-full blur-[80px]">
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0">
+        <div class="absolute inset-0 bg-white/80 backdrop-blur-xl border-b border-white/40"></div>
+        <div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between relative z-10">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="https://img1.wsimg.com/isteam/ip/f791d9b9-2f6c-4539-b9b3-61b4c8a8a446/Blue%20Minimalist%20Brain%20Bulb%20Logo%20Transparent.png/:/rs=w:206,h:206,cg:true,m/cr=w:206,h:206/qt=q:95"
+                    alt="MyKohi Logo" class="h-14">
+            </a>
+
+            <div
+                class="hidden lg:flex items-center gap-1 bg-slate-100/50 p-1.5 rounded-full border border-slate-200/60">
+                <a href="index.html"
+                    class="px-5 py-2 rounded-full text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white transition-all">Home</a>
+                <a href="about.html"
+                    class="px-5 py-2 rounded-full text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white transition-all">About</a>
+                <a href="marketing.html"
+                    class="px-5 py-2 rounded-full text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white transition-all">Marketing</a>
+                <a href="practice-development.html"
+                    class="px-5 py-2 rounded-full text-sm font-medium bg-white text-slate-900 shadow-sm">Practice
+                    Development</a>
+                <a href="contact.html"
+                    class="px-5 py-2 rounded-full text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white transition-all">Contact</a>
+            </div>
+
+            <a href="contact.html"
+                class="hidden md:flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-medium hover:bg-slate-800 transition-all shadow-lg">
+                <span>Get Started</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 relative overflow-hidden">
+        <div class="max-w-[1400px] mx-auto px-6 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <!-- Badge -->
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 mb-6">
+                    <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                    <span class="text-purple-700 font-mono font-bold uppercase tracking-widest text-xs">Practice
+                        Excellence</span>
+                </div>
+
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-slate-900 mb-6 leading-tight">
+                    Comprehensive Consulting for
+                    <span class="hero-gradient">Operational Excellence</span>
+                </h1>
+
+                <p class="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto mb-8">
+                    Transform your practice with expert guidance in clinic assessment, provider training, and strategic
+                    development.
+                </p>
+
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <a href="clinic-assessment.html"
+                        class="px-8 py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-slate-800 transition-all shadow-xl">
+                        Get Your Clinic Assessment
+                    </a>
+                    <a href="#services"
+                        class="px-8 py-4 bg-white text-slate-900 rounded-2xl font-bold border border-slate-200 hover:border-purple-300 transition-all">
+                        View All Services
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 relative">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <!-- Section Header -->
+            <div class="text-center mb-16 section-reveal">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 border border-slate-200 mb-4">
+                    <span class="text-slate-700 font-mono font-bold uppercase tracking-widest text-xs">Our
+                        Services</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-slate-900 mb-4">
+                    Practice Development Services
+                </h2>
+                <p class="text-slate-500 max-w-2xl mx-auto">
+                    Expert consulting to optimize every aspect of your TMS and Ketamine practice.
+                </p>
+            </div>
+
+            <!-- Services List -->
+            <div class="space-y-8">
+                <!-- Clinic Assessment -->
+                <div
+                    class="group bg-white rounded-3xl border border-slate-100 p-8 md:p-10 hover:border-purple-200 hover:shadow-2xl hover:shadow-purple-50 transition-all duration-500 section-reveal">
+                    <div class="grid md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-8">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div
+                                    class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                                    </svg>
+                                </div>
+                                <span class="text-purple-600 font-mono text-xs uppercase tracking-widest font-bold">360°
+                                    Evaluation</span>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-4">Clinic
+                                Assessment</h3>
+                            <p class="text-slate-500 leading-relaxed mb-6">
+                                Our clinic assessment provides a 360-degree evaluation of your practice, uncovering
+                                opportunities to optimize operations and elevate patient care. We analyze every aspect
+                                of your workflows, from staff roles and patient interactions to accommodations and
+                                resource management, ensuring your clinic operates with maximum efficiency.
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <span
+                                    class="px-4 py-2 rounded-full bg-purple-50 text-purple-700 text-sm font-medium">Workflow
+                                    Analysis</span>
+                                <span
+                                    class="px-4 py-2 rounded-full bg-purple-50 text-purple-700 text-sm font-medium">Gap
+                                    Identification</span>
+                                <span
+                                    class="px-4 py-2 rounded-full bg-purple-50 text-purple-700 text-sm font-medium">Best
+                                    Practices</span>
+                            </div>
+                        </div>
+                        <div class="md:col-span-4 flex justify-center md:justify-end">
+                            <a href="clinic-assessment.html"
+                                class="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-purple-600 transition-all">
+                                Take Assessment
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Provider Training -->
+                <div class="group bg-white rounded-3xl border border-slate-100 p-8 md:p-10 hover:border-teal-200 hover:shadow-2xl hover:shadow-teal-50 transition-all duration-500 section-reveal"
+                    style="animation-delay: 0.1s;">
+                    <div class="grid md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-8">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div
+                                    class="w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                    </svg>
+                                </div>
+                                <span class="text-teal-600 font-mono text-xs uppercase tracking-widest font-bold">Team
+                                    Empowerment</span>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-4">Provider
+                                Training</h3>
+                            <p class="text-slate-500 leading-relaxed mb-6">
+                                Our tailored training programs for TMS and Ketamine providers equip your team with the
+                                tools and strategies to engage patients confidently and effectively. We focus on key
+                                areas such as patient enrollment, outreach, and delivering exceptional care.
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <span
+                                    class="px-4 py-2 rounded-full bg-teal-50 text-teal-700 text-sm font-medium">Patient
+                                    Enrollment</span>
+                                <span class="px-4 py-2 rounded-full bg-teal-50 text-teal-700 text-sm font-medium">Trust
+                                    Building</span>
+                                <span
+                                    class="px-4 py-2 rounded-full bg-teal-50 text-teal-700 text-sm font-medium">Outreach
+                                    Techniques</span>
+                            </div>
+                        </div>
+                        <div class="md:col-span-4 flex justify-center md:justify-end">
+                            <a href="contact.html"
+                                class="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-teal-600 transition-all">
+                                Learn More
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intake Training -->
+                <div class="group bg-white rounded-3xl border border-slate-100 p-8 md:p-10 hover:border-brand-200 hover:shadow-2xl hover:shadow-brand-50 transition-all duration-500 section-reveal"
+                    style="animation-delay: 0.2s;">
+                    <div class="grid md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-8">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div
+                                    class="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-500 to-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="text-brand-600 font-mono text-xs uppercase tracking-widest font-bold">Conversion
+                                    Optimization</span>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-4">Intake Training
+                            </h3>
+                            <p class="text-slate-500 leading-relaxed mb-6">
+                                Our specialized intake training empowers your team to optimize patient enrollment and
+                                enhance conversion rates. We provide customized scripts and presentations to guide
+                                conversations, address concerns, and highlight the unique benefits of TMS and Ketamine
+                                therapies.
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <span
+                                    class="px-4 py-2 rounded-full bg-brand-50 text-brand-700 text-sm font-medium">Customized
+                                    Scripts</span>
+                                <span
+                                    class="px-4 py-2 rounded-full bg-brand-50 text-brand-700 text-sm font-medium">Conversion
+                                    Tactics</span>
+                                <span
+                                    class="px-4 py-2 rounded-full bg-brand-50 text-brand-700 text-sm font-medium">Patient
+                                    Onboarding</span>
+                            </div>
+                        </div>
+                        <div class="md:col-span-4 flex justify-center md:justify-end">
+                            <a href="contact.html"
+                                class="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-brand-600 transition-all">
+                                Get Training
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mystery Patient Call -->
+                <div class="group bg-white rounded-3xl border border-slate-100 p-8 md:p-10 hover:border-rose-200 hover:shadow-2xl hover:shadow-rose-50 transition-all duration-500 section-reveal"
+                    style="animation-delay: 0.3s;">
+                    <div class="grid md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-8">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div
+                                    class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="text-rose-600 font-mono text-xs uppercase tracking-widest font-bold">Quality
+                                    Assurance</span>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-4">Mystery Patient
+                                Call & Review</h3>
+                            <p class="text-slate-500 leading-relaxed mb-6">
+                                Our secret shopper service provides an authentic evaluation of your clinic's intake
+                                strategy, offering invaluable insights into the patient experience. We simulate the
+                                journey of potential patients from their first point of contact, revealing how
+                                effectively your team handles patient enrollment.
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <span
+                                    class="px-4 py-2 rounded-full bg-rose-50 text-rose-700 text-sm font-medium">Undercover
+                                    Assessment</span>
+                                <span
+                                    class="px-4 py-2 rounded-full bg-rose-50 text-rose-700 text-sm font-medium">Detailed
+                                    Feedback</span>
+                                <span
+                                    class="px-4 py-2 rounded-full bg-rose-50 text-rose-700 text-sm font-medium">Actionable
+                                    Insights</span>
+                            </div>
+                        </div>
+                        <div class="md:col-span-4 flex justify-center md:justify-end">
+                            <a href="contact.html"
+                                class="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-rose-600 transition-all">
+                                Schedule Review
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Referral Network Strategy -->
+                <div class="group bg-white rounded-3xl border border-slate-100 p-8 md:p-10 hover:border-amber-200 hover:shadow-2xl hover:shadow-amber-50 transition-all duration-500 section-reveal"
+                    style="animation-delay: 0.4s;">
+                    <div class="grid md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-8">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div
+                                    class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="text-amber-600 font-mono text-xs uppercase tracking-widest font-bold">Growth
+                                    Network</span>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-4">Referral Network
+                                Strategy</h3>
+                            <p class="text-slate-500 leading-relaxed mb-6">
+                                We craft targeted referral strategies for TMS and Ketamine providers, unlocking untapped
+                                opportunities to grow your patient base. We identify often-overlooked sources such as
+                                primary care physicians, therapists, specialists, and local community organizations.
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <span
+                                    class="px-4 py-2 rounded-full bg-amber-50 text-amber-700 text-sm font-medium">Partner
+                                    Identification</span>
+                                <span
+                                    class="px-4 py-2 rounded-full bg-amber-50 text-amber-700 text-sm font-medium">Outreach
+                                    Templates</span>
+                                <span class="px-4 py-2 rounded-full bg-amber-50 text-amber-700 text-sm font-medium">EAP
+                                    Programs</span>
+                            </div>
+                        </div>
+                        <div class="md:col-span-4 flex justify-center md:justify-end">
+                            <a href="contact.html"
+                                class="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-amber-600 transition-all">
+                                Build Network
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-slate-900 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-500/20 rounded-full blur-[100px]"></div>
+        </div>
+
+        <div class="max-w-[900px] mx-auto px-6 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-6">
+                Ready to Transform Your Practice?
+            </h2>
+            <p class="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">
+                Let our experts help you optimize operations, train your team, and build a sustainable referral network.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html"
+                    class="px-8 py-4 bg-white text-slate-900 rounded-2xl font-bold hover:bg-purple-50 transition-all shadow-xl">
+                    Schedule a Consultation
+                </a>
+                <a href="tel:18334695644"
+                    class="px-8 py-4 border border-white/30 text-white rounded-2xl font-bold hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    1-833-4MY-KOHI
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100 py-12">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-4">
+                    <img src="https://img1.wsimg.com/isteam/ip/f791d9b9-2f6c-4539-b9b3-61b4c8a8a446/Blue%20Minimalist%20Brain%20Bulb%20Logo%20Transparent.png/:/rs=w:206,h:206,cg:true,m/cr=w:206,h:206/qt=q:95"
+                        alt="MyKohi Logo" class="h-12">
+                    <span class="text-slate-400 text-sm">© 2026 MyKohi. All rights reserved.</span>
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="index.html" class="text-slate-500 hover:text-brand-600 text-sm transition-colors">Home</a>
+                    <a href="about.html" class="text-slate-500 hover:text-brand-600 text-sm transition-colors">About</a>
+                    <a href="marketing.html"
+                        class="text-slate-500 hover:text-brand-600 text-sm transition-colors">Marketing</a>
+                    <a href="contact.html"
+                        class="text-slate-500 hover:text-brand-600 text-sm transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll Animations -->
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>

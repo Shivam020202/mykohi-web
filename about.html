@@ -96,15 +96,23 @@
         .hero-title-gradient {
             background: linear-gradient(135deg, #0f172a 0%, #334155 50%, #0ea5e9 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .section-reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-reveal.animate {
             opacity: 0;
             transform: translateY(40px);
         }
 
         .section-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
             animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
@@ -287,39 +295,78 @@
         </div>
     </section>
 
-    <!-- Our Story Section -->
+    <!-- Our Story Section - Clean Light Design -->
     <section id="story" class="py-10 bg-white relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent">
+        <!-- Subtle background decorations -->
+        <div
+            class="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-brand-50 to-transparent rounded-full blur-[80px]">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-gradient-to-tr from-purple-50 to-transparent rounded-full blur-[60px]">
         </div>
 
-        <div class="max-w-[1400px] mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div class="max-w-[1400px] mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 <!-- Image Side -->
-                <div class="relative section-reveal">
+                <div class="section-reveal order-2 lg:order-1">
                     <div class="relative">
+                        <!-- Decorative frame -->
                         <div
-                            class="absolute -inset-4 bg-gradient-to-r from-brand-100 to-purple-100 rounded-[2.5rem] -rotate-3">
+                            class="absolute -inset-3 bg-gradient-to-br from-brand-100 via-purple-50 to-teal-50 rounded-[2rem] -rotate-2">
                         </div>
-                        <img src="kohi.webp" alt="Kohi - Our Inspiration"
-                            class="relative rounded-[2rem] shadow-2xl w-full max-w-md mx-auto">
-                    </div>
-                    <!-- Decorative Element -->
-                    <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-brand-100 rounded-full blur-3xl opacity-60">
+                        <div
+                            class="absolute -inset-3 bg-gradient-to-tl from-brand-100 via-purple-50 to-teal-50 rounded-[2rem] rotate-2 opacity-50">
+                        </div>
+
+                        <!-- Main image -->
+                        <div class="relative rounded-[1.5rem] overflow-hidden shadow-2xl shadow-slate-200/50">
+                            <img src="kohi.webp" alt="Kohi - Our Inspiration" class="w-full h-auto object-cover">
+                        </div>
+
+                        <!-- Floating label -->
+                        <div
+                            class="absolute -bottom-4 left-1/2 -translate-x-1/2 px-6 py-3 bg-white rounded-full shadow-lg border border-slate-100 flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-gradient-to-br from-brand-500 to-purple-500 flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-display font-bold text-slate-900 text-sm">Kohi</p>
+                                <p class="text-slate-500 text-xs">Our Inspiration</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Content Side -->
-                <div class="space-y-8 section-reveal">
-                    <span class="text-brand-600 font-mono font-bold uppercase tracking-widest text-xs">Our Story</span>
-                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-slate-900 leading-tight">
-                        A Movement Rooted <br />in Compassion
+                <div class="space-y-6 section-reveal order-1 lg:order-2" style="animation-delay: 0.1s;">
+                    <!-- Badge -->
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 border border-brand-100">
+                        <svg class="w-4 h-4 text-brand-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                        <span class="text-brand-700 font-mono font-bold uppercase tracking-widest text-xs">Our
+                            Story</span>
+                    </div>
+
+                    <!-- Heading -->
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-slate-900 leading-tight">
+                        A Movement Rooted in
+                        <span
+                            class="bg-gradient-to-r from-brand-600 to-purple-600 bg-clip-text text-transparent">Compassion</span>
                     </h2>
 
-                    <div class="space-y-6 text-slate-600 leading-relaxed">
+                    <!-- Story Content -->
+                    <div class="space-y-4 text-slate-600 leading-relaxed">
                         <p class="text-lg">
-                            <strong class="text-slate-900">MyKohi was born from love.</strong> Specifically, the love
-                            and spirit of Kohi, Dr. Karan's beloved rescue pup whose grace and empathy touched every
-                            life she encountered.
+                            <span class="font-semibold text-slate-900">MyKohi was born from love.</span> Specifically,
+                            the love and spirit of Kohi, Dr. Karan's beloved rescue pup whose grace and empathy touched
+                            every life she encountered.
                         </p>
                         <p>
                             Kohi reminded us of the simple, transformative power of compassion: that by serving others
@@ -334,83 +381,195 @@
                     </div>
 
                     <!-- Quote -->
-                    <div class="relative bg-slate-50 rounded-2xl p-8 border-l-4 border-brand-500 mt-8">
-                        <span class="quote-mark">"</span>
-                        <p class="text-xl font-display italic text-slate-700 relative z-10">
+                    <div
+                        class="relative mt-8 p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-white border border-slate-100">
+                        <div class="absolute -top-3 left-6">
+                            <div
+                                class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-500 to-purple-500 flex items-center justify-center shadow-lg">
+                                <span class="text-white text-2xl font-serif leading-none">"</span>
+                            </div>
+                        </div>
+                        <p class="text-lg font-display italic text-slate-700 pt-4">
                             A dog will teach you unconditional love. If you have that in your life, things won't be too
                             hard.
                         </p>
+                        <div class="flex items-center gap-3 mt-4">
+                            <div class="w-10 h-px bg-gradient-to-r from-brand-300 to-transparent"></div>
+                            <span class="text-slate-400 text-sm font-medium">Words to live by</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- What We Do Section -->
-    <section class="py-10 relative">
-        <div class="max-w-[1400px] mx-auto px-6">
-            <div class="text-center mb-16 section-reveal">
-                <span class="text-brand-600 font-mono font-bold uppercase tracking-widest text-xs mb-4 block">What We
-                    Do</span>
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-slate-900 mb-6">
-                    Transforming Mental<br />Health Practices
+    <!-- What We Do Section - Innovative Design -->
+    <section class="py-10 relative overflow-hidden">
+        <!-- Background decorations -->
+        <div
+            class="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-brand-100/40 to-transparent rounded-full blur-[100px]">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-purple-100/40 to-transparent rounded-full blur-[80px]">
+        </div>
+
+        <div class="max-w-[1400px] mx-auto px-6 relative z-10">
+            <!-- Header -->
+            <div class="text-center mb-12 section-reveal">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 border border-brand-100 mb-6">
+                    <div class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></div>
+                    <span class="text-brand-700 font-mono font-bold uppercase tracking-widest text-xs">What We Do</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-slate-900 mb-4">
+                    Transforming Mental Health
+                    <span
+                        class="bg-gradient-to-r from-brand-600 via-purple-600 to-teal-600 bg-clip-text text-transparent">Practices</span>
                 </h2>
-                <p class="text-slate-500 text-lg max-w-3xl mx-auto">
+                <p class="text-slate-500 text-base max-w-2xl mx-auto">
                     We partner with mental health providers to transform patient enrollment into a seamless and
                     value-driven experience.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div
-                    class="value-card bg-white rounded-[2rem] p-8 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 section-reveal">
+            <!-- Services Grid - Bento Style -->
+            <div class="grid lg:grid-cols-3 gap-4">
+                <!-- Card 1 - Large Featured -->
+                <div class="lg:col-span-2 group section-reveal">
                     <div
-                        class="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-500 to-blue-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-brand-500/20">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
+                        class="relative h-full rounded-[1.5rem] overflow-hidden bg-gradient-to-br from-brand-600 to-blue-700 p-8 min-h-[280px] flex flex-col justify-between">
+                        <!-- Decorative elements -->
+                        <div
+                            class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full blur-2xl translate-y-1/2 -translate-x-1/4">
+                        </div>
+
+                        <!-- Step number -->
+                        <div
+                            class="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                            <span class="text-white font-display font-bold text-xl">01</span>
+                        </div>
+
+                        <div class="relative z-10">
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-display font-bold text-white mb-3">Patient Journey
+                                Optimization</h3>
+                            <p class="text-white/80 leading-relaxed max-w-lg">
+                                Our approach creates a patient journey that strengthens provider-patient relationships
+                                from intake through treatment completion.
+                            </p>
+                        </div>
+
+                        <!-- CTA Arrow -->
+                        <div class="relative z-10 mt-6">
+                            <div
+                                class="inline-flex items-center gap-2 text-white/90 font-medium text-sm group-hover:gap-3 transition-all">
+                                <span>Learn more</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-display font-bold text-slate-900 mb-4">Patient Journey Optimization</h3>
-                    <p class="text-slate-600 leading-relaxed">
-                        Our approach creates a patient journey that strengthens provider-patient relationships from
-                        intake through treatment completion.
-                    </p>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="value-card bg-white rounded-[2rem] p-8 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 section-reveal"
-                    style="animation-delay: 0.1s;">
+                <!-- Card 2 - Vertical -->
+                <div class="group section-reveal" style="animation-delay: 0.1s;">
                     <div
-                        class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-purple-500/20">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                        </svg>
+                        class="relative h-full rounded-[1.5rem] overflow-hidden bg-gradient-to-br from-purple-600 to-pink-600 p-6 min-h-[280px] flex flex-col justify-between">
+                        <div
+                            class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2">
+                        </div>
+
+                        <!-- Step number -->
+                        <div
+                            class="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                            <span class="text-white font-display font-bold">02</span>
+                        </div>
+
+                        <div class="relative z-10">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-display font-bold text-white mb-2">Digital Marketing Excellence</h3>
+                            <p class="text-white/80 text-sm leading-relaxed">
+                                Enhance your digital presence and drive meaningful inquiries through authentic
+                                messaging.
+                            </p>
+                        </div>
+
+                        <div class="relative z-10 mt-4">
+                            <div
+                                class="inline-flex items-center gap-2 text-white/90 font-medium text-sm group-hover:gap-3 transition-all">
+                                <span>Explore</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-display font-bold text-slate-900 mb-4">Digital Marketing Excellence</h3>
-                    <p class="text-slate-600 leading-relaxed">
-                        Our marketing strategies enhance your digital presence and drive meaningful inquiries through
-                        authentic messaging and targeted ad management.
-                    </p>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="value-card bg-white rounded-[2rem] p-8 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 section-reveal"
-                    style="animation-delay: 0.2s;">
+                <!-- Card 3 - Full Width Bottom -->
+                <div class="lg:col-span-3 group section-reveal" style="animation-delay: 0.2s;">
                     <div
-                        class="w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-teal-500/20">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
+                        class="relative rounded-[1.5rem] overflow-hidden bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 p-8">
+                        <div class="absolute inset-0 bg-gradient-to-r from-teal-500/10 via-transparent to-cyan-500/10">
+                        </div>
+                        <div
+                            class="absolute top-0 left-1/2 w-96 h-32 bg-teal-500/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2">
+                        </div>
+
+                        <div class="relative z-10 flex flex-col md:flex-row items-center gap-8">
+                            <!-- Left content -->
+                            <div class="flex-1">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <div
+                                        class="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </div>
+                                    <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                                        <span class="text-white font-display font-bold">03</span>
+                                    </div>
+                                </div>
+                                <h3 class="text-2xl font-display font-bold text-white mb-3">Training & Coaching</h3>
+                                <p class="text-slate-400 leading-relaxed max-w-xl">
+                                    Tailored training, coaching, and actionable strategies equip providers with tools to
+                                    foster organic and meaningful conversations with patients.
+                                </p>
+                            </div>
+
+                            <!-- Right Stats -->
+                            <div class="flex gap-6 md:gap-10">
+                                <div class="text-center">
+                                    <div class="text-3xl md:text-4xl font-display font-bold text-teal-400">100+</div>
+                                    <div class="text-slate-500 text-sm">Providers Trained</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl md:text-4xl font-display font-bold text-cyan-400">95%</div>
+                                    <div class="text-slate-500 text-sm">Success Rate</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-display font-bold text-slate-900 mb-4">Training & Coaching</h3>
-                    <p class="text-slate-600 leading-relaxed">
-                        Tailored training, coaching, and actionable strategies equip providers with tools to foster
-                        organic and meaningful conversations with patients.
-                    </p>
                 </div>
             </div>
         </div>
@@ -424,309 +583,315 @@
         </div>
 
         <div class="max-w-[900px] mx-auto px-6 text-center relative z-10">
-            <div class="inline-block mb-8">
+            <div class="inline-block mb-6">
                 <span class="text-brand-400 font-mono font-bold uppercase tracking-widest text-xs">Our Philosophy</span>
             </div>
 
-            <blockquote class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white leading-snug mb-8">
+            <blockquote class="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-white leading-snug mb-6">
                 "Quality is never an accident; it is always the result of <span class="text-brand-400">intelligent
                     effort.</span>"
             </blockquote>
 
-            <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+            <p class="text-slate-400 text-base max-w-2xl mx-auto">
                 We identify tailored growth opportunities and deliver strategies that boost patient traffic and
-                sustainable growth. Our solutions emphasize efficacy, sustainability, and quality.
+                sustainable growth.
             </p>
         </div>
     </section>
 
-    <!-- Values Section -->
-    <section class="py-10 bg-white relative">
-        <div class="max-w-[1400px] mx-auto px-6">
-            <div class="text-center mb-16 section-reveal">
-                <span class="text-brand-600 font-mono font-bold uppercase tracking-widest text-xs mb-4 block">Our
-                    Foundation</span>
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-slate-900 mb-6">
-                    Values & Beliefs
-                </h2>
-                <p class="text-slate-500 text-lg max-w-3xl mx-auto">
+    <!-- Values Section - Innovative Design -->
+    <section class="py-10 relative overflow-hidden">
+        <!-- Background -->
+        <div class="absolute inset-0 bg-gradient-to-b from-white via-slate-50 to-white"></div>
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-brand-100/30 via-purple-100/30 to-teal-100/30 rounded-full blur-[120px]">
+        </div>
+
+        <div class="max-w-[1400px] mx-auto px-6 relative z-10">
+            <!-- Header -->
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-12 section-reveal">
+                <div>
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 border border-slate-200 mb-4">
+                        <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                        <span class="text-slate-700 font-mono font-bold uppercase tracking-widest text-xs">Our
+                            Foundation</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-slate-900">
+                        Values & Beliefs
+                    </h2>
+                </div>
+                <p class="text-slate-500 max-w-md lg:text-right">
                     Your practice and challenges are unique. Our hands-on approach ensures guidance at every step.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Value 1 -->
-                <div
-                    class="group bg-gradient-to-br from-slate-50 to-white rounded-2xl p-8 border border-slate-100 hover:border-brand-200 transition-all section-reveal">
+            <!-- Values Cards - Creative Layout -->
+            <div class="grid md:grid-cols-2 gap-4">
+                <!-- Compassion -->
+                <div class="group relative section-reveal">
                     <div
-                        class="w-12 h-12 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                        </svg>
+                        class="relative rounded-[1.5rem] overflow-hidden bg-white border border-slate-200 p-6 hover:border-brand-300 hover:shadow-xl hover:shadow-brand-100/50 transition-all duration-500">
+                        <!-- Gradient accent -->
+                        <div
+                            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-500 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left">
+                        </div>
+
+                        <div class="flex items-start gap-5">
+                            <div
+                                class="shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-500 to-blue-600 flex items-center justify-center shadow-lg shadow-brand-500/25 group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h3 class="text-xl font-display font-bold text-slate-900">Compassion</h3>
+                                    <span
+                                        class="text-5xl font-display font-bold text-slate-100 group-hover:text-brand-100 transition-colors">01</span>
+                                </div>
+                                <p class="text-slate-600 leading-relaxed">
+                                    Rooted in care and understanding, we serve with presence and purpose. Every
+                                    interaction is guided by empathy.
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-display font-bold text-slate-900 mb-3">Compassion</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Rooted in care and understanding, we serve with
-                        presence and purpose.</p>
                 </div>
 
-                <!-- Value 2 -->
-                <div
-                    class="group bg-gradient-to-br from-slate-50 to-white rounded-2xl p-8 border border-slate-100 hover:border-purple-200 transition-all section-reveal">
+                <!-- Partnership -->
+                <div class="group relative section-reveal" style="animation-delay: 0.1s;">
                     <div
-                        class="w-12 h-12 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                        </svg>
+                        class="relative rounded-[1.5rem] overflow-hidden bg-white border border-slate-200 p-6 hover:border-purple-300 hover:shadow-xl hover:shadow-purple-100/50 transition-all duration-500">
+                        <div
+                            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left">
+                        </div>
+
+                        <div class="flex items-start gap-5">
+                            <div
+                                class="shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center shadow-lg shadow-purple-500/25 group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h3 class="text-xl font-display font-bold text-slate-900">Partnership</h3>
+                                    <span
+                                        class="text-5xl font-display font-bold text-slate-100 group-hover:text-purple-100 transition-colors">02</span>
+                                </div>
+                                <p class="text-slate-600 leading-relaxed">
+                                    We build genuine partnerships with direct access to experts who understand your
+                                    unique nuances and challenges.
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-display font-bold text-slate-900 mb-3">Partnership</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">We build genuine partnerships with direct access
-                        to experts who understand your nuances.</p>
                 </div>
 
-                <!-- Value 3 -->
-                <div
-                    class="group bg-gradient-to-br from-slate-50 to-white rounded-2xl p-8 border border-slate-100 hover:border-teal-200 transition-all section-reveal">
+                <!-- Excellence -->
+                <div class="group relative section-reveal" style="animation-delay: 0.2s;">
                     <div
-                        class="w-12 h-12 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                        </svg>
+                        class="relative rounded-[1.5rem] overflow-hidden bg-white border border-slate-200 p-6 hover:border-teal-300 hover:shadow-xl hover:shadow-teal-100/50 transition-all duration-500">
+                        <div
+                            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-500 to-cyan-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left">
+                        </div>
+
+                        <div class="flex items-start gap-5">
+                            <div
+                                class="shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center shadow-lg shadow-teal-500/25 group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h3 class="text-xl font-display font-bold text-slate-900">Excellence</h3>
+                                    <span
+                                        class="text-5xl font-display font-bold text-slate-100 group-hover:text-teal-100 transition-colors">03</span>
+                                </div>
+                                <p class="text-slate-600 leading-relaxed">
+                                    Quality is intentional. We deliver measurable results through intelligent effort and
+                                    unwavering dedication.
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-display font-bold text-slate-900 mb-3">Excellence</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Quality is intentional. We deliver measurable
-                        results through intelligent effort.</p>
                 </div>
 
-                <!-- Value 4 -->
-                <div
-                    class="group bg-gradient-to-br from-slate-50 to-white rounded-2xl p-8 border border-slate-100 hover:border-rose-200 transition-all section-reveal">
+                <!-- Impact -->
+                <div class="group relative section-reveal" style="animation-delay: 0.3s;">
                     <div
-                        class="w-12 h-12 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
+                        class="relative rounded-[1.5rem] overflow-hidden bg-white border border-slate-200 p-6 hover:border-rose-300 hover:shadow-xl hover:shadow-rose-100/50 transition-all duration-500">
+                        <div
+                            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-rose-500 to-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left">
+                        </div>
+
+                        <div class="flex items-start gap-5">
+                            <div
+                                class="shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-500 to-orange-600 flex items-center justify-center shadow-lg shadow-rose-500/25 group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h3 class="text-xl font-display font-bold text-slate-900">Impact</h3>
+                                    <span
+                                        class="text-5xl font-display font-bold text-slate-100 group-hover:text-rose-100 transition-colors">04</span>
+                                </div>
+                                <p class="text-slate-600 leading-relaxed">
+                                    Making a lasting difference in the lives of patients and their communities through
+                                    meaningful work.
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-display font-bold text-slate-900 mb-3">Impact</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Making a lasting difference in the lives of
-                        patients and their communities.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Team Section - Innovative Design -->
-    <section id="team" class="py-10 relative overflow-hidden">
-        <!-- Background with gradient mesh -->
-        <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
+    <!-- Team Section - Clean Light Design -->
+    <section id="team" class="py-10 bg-white relative overflow-hidden">
+        <!-- Subtle background decorations -->
         <div
-            class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] opacity-5 bg-cover bg-center">
+            class="absolute top-0 left-0 w-[300px] h-[300px] bg-gradient-to-br from-brand-50 to-transparent rounded-full blur-[80px]">
         </div>
-
-        <!-- Animated floating shapes -->
-        <div class="absolute top-20 left-10 w-72 h-72 bg-brand-500/20 rounded-full blur-[100px] animate-float"></div>
-        <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/20 rounded-full blur-[120px] animate-float"
-            style="animation-delay: -4s;"></div>
-        <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-teal-500/10 rounded-full blur-[80px] animate-pulse-glow">
+        <div
+            class="absolute bottom-0 right-0 w-[250px] h-[250px] bg-gradient-to-tl from-purple-50 to-transparent rounded-full blur-[60px]">
         </div>
 
         <div class="max-w-[1400px] mx-auto px-6 relative z-10">
             <!-- Section Header -->
-            <div class="text-center mb-20 section-reveal">
+            <div class="text-center mb-12 section-reveal">
                 <div
-                    class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6">
-                    <span class="relative flex h-2 w-2">
-                        <span
-                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
-                    </span>
-                    <span class="text-xs font-bold uppercase tracking-widest text-brand-300 font-mono">Meet The
-                        Visionaries</span>
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 border border-brand-100 mb-4">
+                    <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <span class="text-brand-700 font-mono font-bold uppercase tracking-widest text-xs">Our Team</span>
                 </div>
-                <h2 class="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-white mb-6 leading-tight">
-                    The Minds Behind<br />
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-slate-900 mb-3">
+                    Meet the
                     <span
-                        class="bg-gradient-to-r from-brand-400 via-purple-400 to-teal-400 bg-clip-text text-transparent">The
-                        Movement</span>
+                        class="bg-gradient-to-r from-brand-600 to-purple-600 bg-clip-text text-transparent">Visionaries</span>
                 </h2>
-                <p class="text-slate-400 text-lg max-w-2xl mx-auto">
-                    A leadership team bridging the gap between clinical excellence and strategic growth.
+                <p class="text-slate-500 max-w-xl mx-auto">
+                    A leadership team bridging clinical excellence and strategic growth.
                 </p>
             </div>
 
-            <!-- Team Grid - Bento Style -->
-            <div class="grid lg:grid-cols-12 gap-6 mb-6">
-                <!-- Dr. Karan - Featured Large Card -->
-                <div class="lg:col-span-7 group section-reveal">
+            <!-- Team Grid - Simple 4 Column -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Dr. Karan Narwal -->
+                <div class="group section-reveal">
                     <div
-                        class="relative h-full rounded-[2rem] overflow-hidden bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 hover:border-brand-500/50 transition-all duration-500">
-                        <!-- Animated gradient border -->
-                        <div
-                            class="absolute inset-0 rounded-[2rem] p-[1px] bg-gradient-to-r from-brand-500 via-purple-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10">
-                        </div>
-
-                        <div class="flex flex-col md:flex-row h-full">
-                            <!-- Image -->
-                            <div class="md:w-1/2 relative overflow-hidden">
+                        class="bg-white rounded-2xl border border-slate-100 p-6 hover:border-brand-200 hover:shadow-xl hover:shadow-brand-50 transition-all duration-300">
+                        <div class="relative mb-4">
+                            <div
+                                class="w-24 h-24 mx-auto rounded-full overflow-hidden ring-4 ring-brand-50 group-hover:ring-brand-100 transition-all">
                                 <img src="https://img1.wsimg.com/isteam/ip/f791d9b9-2f6c-4539-b9b3-61b4c8a8a446/karan.png/:/cr=t:0%25,l:4.21%25,w:80.65%25,h:80.19%25/rs=w:600,h:600,cg:true,m/qt=q:50"
                                     alt="Dr. Karan Narwal"
-                                    class="w-full h-64 md:h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-r from-transparent to-slate-900/80 md:bg-gradient-to-t md:from-slate-900/60 md:via-transparent md:to-transparent">
-                                </div>
-
-                                <!-- Floating achievement badge -->
-                                <div
-                                    class="absolute top-4 left-4 px-4 py-2 rounded-full bg-brand-500/90 backdrop-blur-sm text-white text-xs font-bold flex items-center gap-2 shadow-lg shadow-brand-500/30">
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                                    </svg>
-                                    15,000+ Treatments
-                                </div>
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             </div>
-
-                            <!-- Content -->
-                            <div class="md:w-1/2 p-8 flex flex-col justify-center">
-                                <div class="mb-4">
-                                    <span class="text-brand-400 font-mono text-xs uppercase tracking-widest">Founder &
-                                        President</span>
-                                    <h3 class="text-3xl font-display font-bold text-white mt-2">Dr. Karan Narwal</h3>
-                                </div>
-
-                                <p class="text-slate-300 leading-relaxed mb-6 text-sm">
-                                    Clinical researcher, treatment specialist, and business executive with over a decade
-                                    of experience. Built one of Tampa Bay's leading mental health centers.
-                                </p>
-
-                                <div class="flex flex-wrap gap-2 mb-6">
-                                    <span
-                                        class="px-3 py-1.5 rounded-full bg-white/10 text-white/80 text-xs font-medium border border-white/10">TMS
-                                        Specialist</span>
-                                    <span
-                                        class="px-3 py-1.5 rounded-full bg-white/10 text-white/80 text-xs font-medium border border-white/10">MD</span>
-                                    <span
-                                        class="px-3 py-1.5 rounded-full bg-white/10 text-white/80 text-xs font-medium border border-white/10">Innovator</span>
-                                </div>
-
-                                <a href="https://www.linkedin.com/in/dr-karan-narwal/" target="_blank"
-                                    class="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-white text-slate-900 font-bold text-sm hover:bg-brand-50 transition-colors group/btn w-fit">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                                    </svg>
-                                    Connect on LinkedIn
-                                    <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none"
-                                        stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                    </svg>
-                                </a>
+                            <div
+                                class="absolute -bottom-1 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full bg-brand-500 text-white text-[10px] font-bold">
+                                Founder
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Brian Goldbeck - Vertical Card -->
-                <div class="lg:col-span-5 group section-reveal" style="animation-delay: 0.1s;">
-                    <div
-                        class="relative h-full rounded-[2rem] overflow-hidden bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 hover:border-purple-500/50 transition-all duration-500">
-                        <div class="h-56 relative overflow-hidden">
-                            <img src="https://img1.wsimg.com/isteam/ip/f791d9b9-2f6c-4539-b9b3-61b4c8a8a446/Brian.png/:/cr=t:14.75%25,l:0%25,w:100%25,h:70.5%25/rs=w:600,h:600,cg:true,m/qt=q:50"
-                                alt="Brian Goldbeck"
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent">
-                            </div>
-
-                            <!-- Award badge -->
-                            <div
-                                class="absolute top-4 right-4 w-12 h-12 rounded-full bg-purple-500/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-purple-500/30">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                                </svg>
-                            </div>
-                        </div>
-
-                        <div class="p-6">
-                            <span class="text-purple-400 font-mono text-xs uppercase tracking-widest">Co-Founder &
-                                CEO</span>
-                            <h3 class="text-2xl font-display font-bold text-white mt-2 mb-3">Brian Goldbeck</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                                Decades of expertise in sales and business development. President's Club honors and MVP
-                                awards recipient.
+                        <div class="text-center">
+                            <h3 class="font-display font-bold text-slate-900 mb-0.5">Dr. Karan Narwal</h3>
+                            <p class="text-brand-600 text-xs font-medium mb-2">Founder & President</p>
+                            <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                                Clinical researcher with 15,000+ treatments. Built one of Tampa Bay's leading mental
+                                health centers.
                             </p>
-
-                            <div class="flex items-center justify-between">
-                                <div class="flex gap-2">
-                                    <span
-                                        class="px-2.5 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-medium">Sales
-                                        Leader</span>
-                                </div>
-                                <a href="https://www.linkedin.com/in/briangoldbeck/" target="_blank"
-                                    class="w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-purple-500 transition-colors">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                                    </svg>
-                                </a>
-                            </div>
+                            <a href="https://www.linkedin.com/in/dr-karan-narwal/" target="_blank"
+                                class="inline-flex items-center gap-1.5 text-slate-400 hover:text-brand-600 transition-colors text-sm">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg>
+                                <span>LinkedIn</span>
+                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Second Row - Two Cards -->
-            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Brian Goldbeck -->
+                <div class="group section-reveal" style="animation-delay: 0.1s;">
+                    <div
+                        class="bg-white rounded-2xl border border-slate-100 p-6 hover:border-purple-200 hover:shadow-xl hover:shadow-purple-50 transition-all duration-300">
+                        <div class="relative mb-4">
+                            <div
+                                class="w-24 h-24 mx-auto rounded-full overflow-hidden ring-4 ring-purple-50 group-hover:ring-purple-100 transition-all">
+                                <img src="https://img1.wsimg.com/isteam/ip/f791d9b9-2f6c-4539-b9b3-61b4c8a8a446/Brian.png/:/cr=t:14.75%25,l:0%25,w:100%25,h:70.5%25/rs=w:600,h:600,cg:true,m/qt=q:50"
+                                    alt="Brian Goldbeck"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <div
+                                class="absolute -bottom-1 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full bg-purple-500 text-white text-[10px] font-bold">
+                                Co-Founder
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="font-display font-bold text-slate-900 mb-0.5">Brian Goldbeck</h3>
+                            <p class="text-purple-600 text-xs font-medium mb-2">Co-Founder & CEO</p>
+                            <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                                Decades of sales expertise. President's Club honors and MVP awards recipient.
+                            </p>
+                            <a href="https://www.linkedin.com/in/briangoldbeck/" target="_blank"
+                                class="inline-flex items-center gap-1.5 text-slate-400 hover:text-purple-600 transition-colors text-sm">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg>
+                                <span>LinkedIn</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Stephanie Goldbeck -->
                 <div class="group section-reveal" style="animation-delay: 0.2s;">
                     <div
-                        class="relative rounded-[2rem] overflow-hidden bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 hover:border-teal-500/50 transition-all duration-500">
-                        <div class="flex flex-col sm:flex-row">
-                            <div class="sm:w-2/5 relative overflow-hidden">
+                        class="bg-white rounded-2xl border border-slate-100 p-6 hover:border-teal-200 hover:shadow-xl hover:shadow-teal-50 transition-all duration-300">
+                        <div class="relative mb-4">
+                            <div
+                                class="w-24 h-24 mx-auto rounded-full overflow-hidden ring-4 ring-teal-50 group-hover:ring-teal-100 transition-all">
                                 <img src="https://img1.wsimg.com/isteam/ip/f791d9b9-2f6c-4539-b9b3-61b4c8a8a446/Website%20Stephanie%20.png/:/rs=w:600,h:600,cg:true,m/qt=q:50"
                                     alt="Stephanie Goldbeck"
-                                    class="w-full h-48 sm:h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-r from-transparent to-slate-900/60 sm:bg-gradient-to-t sm:from-slate-900/40 sm:via-transparent sm:to-transparent">
-                                </div>
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             </div>
-
-                            <div class="sm:w-3/5 p-6">
-                                <div class="flex items-start justify-between mb-3">
-                                    <div>
-                                        <span class="text-teal-400 font-mono text-xs uppercase tracking-widest">COO &
-                                            CMO</span>
-                                        <h3 class="text-xl font-display font-bold text-white mt-1">Stephanie Goldbeck
-                                        </h3>
-                                    </div>
-                                    <a href="https://www.linkedin.com/in/stephanie-goldbeck/" target="_blank"
-                                        class="w-9 h-9 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-teal-500 transition-colors shrink-0">
-                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                                        </svg>
-                                    </a>
-                                </div>
-
-                                <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                                    Ensures MyKohi operates with precision, efficiency, and heart. Aligning people,
-                                    processes, and purpose for sustained growth.
-                                </p>
-
-                                <div class="flex flex-wrap gap-2">
-                                    <span
-                                        class="px-2.5 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-medium">Operations</span>
-                                    <span
-                                        class="px-2.5 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-medium">Marketing</span>
-                                    <span
-                                        class="px-2.5 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-medium">Leadership</span>
-                                </div>
+                            <div
+                                class="absolute -bottom-1 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full bg-teal-500 text-white text-[10px] font-bold">
+                                COO & CMO
                             </div>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="font-display font-bold text-slate-900 mb-0.5">Stephanie Goldbeck</h3>
+                            <p class="text-teal-600 text-xs font-medium mb-2">COO & CMO</p>
+                            <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                                Ensures operations run with precision, efficiency, and heart. Aligning people and
+                                purpose.
+                            </p>
+                            <a href="https://www.linkedin.com/in/stephanie-goldbeck/" target="_blank"
+                                class="inline-flex items-center gap-1.5 text-slate-400 hover:text-teal-600 transition-colors text-sm">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg>
+                                <span>LinkedIn</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -734,69 +899,41 @@
                 <!-- Mae Ann Mitchell -->
                 <div class="group section-reveal" style="animation-delay: 0.3s;">
                     <div
-                        class="relative rounded-[2rem] overflow-hidden bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 hover:border-rose-500/50 transition-all duration-500">
-                        <div class="flex flex-col sm:flex-row">
-                            <div class="sm:w-2/5 relative overflow-hidden">
+                        class="bg-white rounded-2xl border border-slate-100 p-6 hover:border-rose-200 hover:shadow-xl hover:shadow-rose-50 transition-all duration-300">
+                        <div class="relative mb-4">
+                            <div
+                                class="w-24 h-24 mx-auto rounded-full overflow-hidden ring-4 ring-rose-50 group-hover:ring-rose-100 transition-all">
                                 <img src="https://img1.wsimg.com/isteam/ip/f791d9b9-2f6c-4539-b9b3-61b4c8a8a446/Mae%20Ann%20Profile%20Picture.webp/:/rs=w:600,h:600,cg:true,m/qt=q:50"
                                     alt="Mae Ann Mitchell"
-                                    class="w-full h-48 sm:h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-r from-transparent to-slate-900/60 sm:bg-gradient-to-t sm:from-slate-900/40 sm:via-transparent sm:to-transparent">
-                                </div>
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             </div>
-
-                            <div class="sm:w-3/5 p-6">
-                                <div class="flex items-start justify-between mb-3">
-                                    <div>
-                                        <span
-                                            class="text-rose-400 font-mono text-xs uppercase tracking-widest">Marketing
-                                            & Ops</span>
-                                        <h3 class="text-xl font-display font-bold text-white mt-1">Mae Ann Mitchell</h3>
-                                    </div>
-                                    <a href="https://www.linkedin.com/in/maeannmitchell/" target="_blank"
-                                        class="w-9 h-9 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-rose-500 transition-colors shrink-0">
-                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                                        </svg>
-                                    </a>
-                                </div>
-
-                                <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                                    Streamlines operations and enhances client experiences. Detail-oriented approach
-                                    ensuring exceptional care delivery.
-                                </p>
-
-                                <div class="flex flex-wrap gap-2">
-                                    <span
-                                        class="px-2.5 py-1 rounded-full bg-rose-500/20 text-rose-300 text-xs font-medium">Coordinator</span>
-                                    <span
-                                        class="px-2.5 py-1 rounded-full bg-rose-500/20 text-rose-300 text-xs font-medium">Operations</span>
-                                    <span
-                                        class="px-2.5 py-1 rounded-full bg-rose-500/20 text-rose-300 text-xs font-medium">Detail-Oriented</span>
-                                </div>
+                            <div
+                                class="absolute -bottom-1 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full bg-rose-500 text-white text-[10px] font-bold">
+                                Marketing & Ops
                             </div>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="font-display font-bold text-slate-900 mb-0.5">Mae Ann Mitchell</h3>
+                            <p class="text-rose-600 text-xs font-medium mb-2">Marketing & Operations</p>
+                            <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                                Streamlines operations with detail-oriented approach ensuring exceptional care delivery.
+                            </p>
+                            <a href="https://www.linkedin.com/in/maeannmitchell/" target="_blank"
+                                class="inline-flex items-center gap-1.5 text-slate-400 hover:text-rose-600 transition-colors text-sm">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg>
+                                <span>LinkedIn</span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Join the Team CTA -->
-            <div class="mt-16 text-center section-reveal">
-                <div
-                    class="inline-flex flex-col sm:flex-row items-center gap-4 px-8 py-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10">
-                    <div class="text-center sm:text-left">
-                        <h3 class="text-xl font-display font-bold text-white mb-1">Want to Join Our Team?</h3>
-                        <p class="text-slate-400 text-sm">We're always looking for passionate individuals.</p>
-                    </div>
-                    <a href="index.html#contact"
-                        class="px-6 py-3 rounded-xl bg-white text-slate-900 font-bold text-sm hover:bg-brand-50 transition-colors whitespace-nowrap">
-                        Get In Touch →
-                    </a>
-                </div>
-            </div>
         </div>
     </section>
+
+
 
     <!-- CTA Section -->
     <section class="py-10 bg-slate-900 relative overflow-hidden">
