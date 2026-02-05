@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | MyKohi - Insights for Mental Health Practices</title>
+    <meta name="description"
+        content="Expert insights, industry trends, and best practices for TMS and Ketamine clinics. Stay informed with MyKohi's blog.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Syne', 'sans-serif'],
+                        mono: ['Space Grotesk', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        accent: {
+                            purple: '#8b5cf6',
+                            teal: '#14b8a6',
+                            rose: '#f43f5e'
+                        }
+                    },
+                    animation: {
+                        'reveal': 'reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        reveal: {
+                            '0%': { opacity: 0, transform: 'translateY(40px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .section-reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-reveal.animate {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .section-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+            animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #334155 50%, #0ea5e9 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="bg-[#f8fafc] text-slate-800 antialiased overflow-x-hidden">
+
+    <!-- Fixed Background -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div
+            class="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:50px_50px]">
+        </div>
+        <div
+            class="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-brand-200/30 to-purple-200/30 rounded-full blur-[100px]">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-teal-200/30 to-blue-200/30 rounded-full blur-[80px]">
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 top-0">
+        <div class="absolute inset-0 bg-white/70 backdrop-blur-xl border-b border-white/40"></div>
+        <div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between relative z-10">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <img src="https://img1.wsimg.com/isteam/ip/f791d9b9-2f6c-4539-b9b3-61b4c8a8a446/Blue%20Minimalist%20Brain%20Bulb%20Logo%20Transparent.png/:/rs=w:206,h:206,cg:true,m/cr=w:206,h:206/qt=q:95"
+                    alt="logo" class="h-16">
+            </a>
+
+            <div
+                class="hidden lg:flex items-center gap-1 bg-slate-100/50 p-1.5 rounded-full border border-slate-200/60 backdrop-blur-sm">
+                <a href="index.html"
+                    class="px-6 py-2.5 rounded-full text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white hover:shadow-sm transition-all">Home</a>
+                <a href="about.html"
+                    class="px-6 py-2.5 rounded-full text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white hover:shadow-sm transition-all">About</a>
+                <a href="marketing.html"
+                    class="px-6 py-2.5 rounded-full text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white hover:shadow-sm transition-all">Marketing</a>
+                <a href="practice-development.html"
+                    class="px-6 py-2.5 rounded-full text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white hover:shadow-sm transition-all">Practice
+                    Dev</a>
+
+                <div class="relative group">
+                    <button
+                        class="px-6 py-2.5 rounded-full text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-white hover:shadow-sm transition-all flex items-center gap-1">
+                        More
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute top-full right-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-slate-100 overflow-hidden hidden group-hover:block">
+                        <a href="treatment-fund.html"
+                            class="block px-4 py-3 text-sm text-slate-600 hover:bg-slate-50 hover:text-brand-600 transition-colors">Treatment
+                            Fund</a>
+                        <a href="media.html"
+                            class="block px-4 py-3 text-sm text-slate-600 hover:bg-slate-50 hover:text-brand-600 transition-colors">Media</a>
+                        <a href="clinic-assessment.html"
+                            class="block px-4 py-3 text-sm text-slate-600 hover:bg-slate-50 hover:text-brand-600 transition-colors">Clinic
+                            Assessment</a>
+                        <a href="blog.html"
+                            class="block px-4 py-3 text-sm text-slate-600 hover:bg-slate-50 hover:text-brand-600 transition-colors">Blog
+                            Page</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="tel:18334695644" class="hidden xl:flex flex-col items-end mr-2 group">
+                    <span
+                        class="text-[10px] uppercase tracking-wider font-bold text-slate-400 group-hover:text-brand-600 transition-colors">CALL
+                        NOW ON</span>
+                    <span class="font-mono font-bold text-sm text-slate-900">1-833-4MY-KOHI</span>
+                </a>
+                <a href="contact.html"
+                    class="hidden md:flex items-center gap-3 px-6 py-3 bg-slate-900 text-white rounded-xl font-medium hover:bg-slate-800 hover:gap-4 transition-all duration-300 shadow-xl shadow-slate-900/20">
+                    <span>Contact us</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 relative overflow-hidden">
+        <div class="max-w-[1400px] mx-auto px-6 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 border border-brand-100 mb-6">
+                    <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                    </svg>
+                    <span class="text-brand-700 font-mono font-bold uppercase tracking-widest text-xs">MyKohi
+                        Blog</span>
+                </div>
+
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-slate-900 mb-6 leading-tight">
+                    Insights & Resources for
+                    <span class="hero-gradient">Mental Health Practices</span>
+                </h1>
+
+                <p class="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto">
+                    Stay informed with the latest industry trends, best practices, and expert advice for growing your
+                    TMS and Ketamine practice.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="py-10 relative">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div
+                class="bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-xl shadow-slate-100/50 section-reveal">
+                <div class="grid lg:grid-cols-2">
+                    <div
+                        class="aspect-[4/3] lg:aspect-auto bg-gradient-to-br from-brand-500 to-purple-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&auto=format&fit=crop&q=80"
+                            alt="TMS Therapy" class="w-full h-full object-cover mix-blend-overlay opacity-60">
+                        <div class="absolute inset-0 flex items-end p-8">
+                            <span
+                                class="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium">Featured
+                                Article</span>
+                        </div>
+                    </div>
+                    <div class="p-8 lg:p-12 flex flex-col justify-center">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-bold">TMS
+                                Therapy</span>
+                            <span class="text-slate-400 text-sm">January 25, 2026</span>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-4">
+                            The Future of TMS: Emerging Trends and Technologies in 2026
+                        </h2>
+                        <p class="text-slate-500 leading-relaxed mb-6">
+                            Explore how transcranial magnetic stimulation is evolving with new protocols, AI-driven
+                            optimization, and personalized treatment approaches that are revolutionizing mental health
+                            care.
+                        </p>
+                        <a href="#"
+                            class="inline-flex items-center gap-2 text-brand-600 font-bold hover:gap-3 transition-all">
+                            Read Full Article
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Categories -->
+    <section class="py-10 relative">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="flex flex-wrap gap-3 justify-center mb-12 section-reveal">
+                <button class="px-6 py-2.5 rounded-full bg-slate-900 text-white text-sm font-medium">All
+                    Articles</button>
+                <button
+                    class="px-6 py-2.5 rounded-full bg-white text-slate-600 text-sm font-medium border border-slate-200 hover:border-brand-300 hover:text-brand-600 transition-all">TMS
+                    Therapy</button>
+                <button
+                    class="px-6 py-2.5 rounded-full bg-white text-slate-600 text-sm font-medium border border-slate-200 hover:border-brand-300 hover:text-brand-600 transition-all">Ketamine</button>
+                <button
+                    class="px-6 py-2.5 rounded-full bg-white text-slate-600 text-sm font-medium border border-slate-200 hover:border-brand-300 hover:text-brand-600 transition-all">Marketing</button>
+                <button
+                    class="px-6 py-2.5 rounded-full bg-white text-slate-600 text-sm font-medium border border-slate-200 hover:border-brand-300 hover:text-brand-600 transition-all">Practice
+                    Growth</button>
+                <button
+                    class="px-6 py-2.5 rounded-full bg-white text-slate-600 text-sm font-medium border border-slate-200 hover:border-brand-300 hover:text-brand-600 transition-all">Patient
+                    Care</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="py-10 relative">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <article
+                    class="group bg-white rounded-2xl border border-slate-100 overflow-hidden hover:shadow-2xl hover:shadow-slate-100 transition-all duration-500 section-reveal">
+                    <div class="aspect-[16/10] overflow-hidden bg-gradient-to-br from-purple-400 to-pink-500 relative">
+                        <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&auto=format&fit=crop&q=80"
+                            alt="Ketamine Therapy"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 mix-blend-overlay opacity-70">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span
+                                class="px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-xs font-bold">Ketamine</span>
+                            <span class="text-slate-400 text-sm">Jan 20, 2026</span>
+                        </div>
+                        <h3
+                            class="text-xl font-display font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">
+                            Understanding Ketamine Therapy: A Provider's Complete Guide
+                        </h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                            Everything you need to know about implementing ketamine therapy in your practice, from
+                            protocols to patient selection.
+                        </p>
+                        <a href="#"
+                            class="inline-flex items-center gap-2 text-brand-600 font-medium text-sm hover:gap-3 transition-all">
+                            Read More
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article
+                    class="group bg-white rounded-2xl border border-slate-100 overflow-hidden hover:shadow-2xl hover:shadow-slate-100 transition-all duration-500 section-reveal"
+                    style="animation-delay: 0.1s;">
+                    <div class="aspect-[16/10] overflow-hidden bg-gradient-to-br from-teal-400 to-cyan-500 relative">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop&q=80"
+                            alt="Marketing Analytics"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 mix-blend-overlay opacity-70">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span
+                                class="px-3 py-1 rounded-full bg-teal-100 text-teal-700 text-xs font-bold">Marketing</span>
+                            <span class="text-slate-400 text-sm">Jan 15, 2026</span>
+                        </div>
+                        <h3
+                            class="text-xl font-display font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">
+                            5 SEO Strategies That Drive Patient Acquisition
+                        </h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                            Proven search engine optimization techniques specifically designed for mental health
+                            practices looking to grow.
+                        </p>
+                        <a href="#"
+                            class="inline-flex items-center gap-2 text-brand-600 font-medium text-sm hover:gap-3 transition-all">
+                            Read More
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article
+                    class="group bg-white rounded-2xl border border-slate-100 overflow-hidden hover:shadow-2xl hover:shadow-slate-100 transition-all duration-500 section-reveal"
+                    style="animation-delay: 0.2s;">
+                    <div class="aspect-[16/10] overflow-hidden bg-gradient-to-br from-amber-400 to-orange-500 relative">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&auto=format&fit=crop&q=80"
+                            alt="Patient Care"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 mix-blend-overlay opacity-70">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-xs font-bold">Patient
+                                Care</span>
+                            <span class="text-slate-400 text-sm">Jan 10, 2026</span>
+                        </div>
+                        <h3
+                            class="text-xl font-display font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">
+                            Building Trust: The Patient Journey in Mental Health
+                        </h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                            How to create a patient experience that builds trust from the first contact through
+                            treatment completion.
+                        </p>
+                        <a href="#"
+                            class="inline-flex items-center gap-2 text-brand-600 font-medium text-sm hover:gap-3 transition-all">
+                            Read More
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article
+                    class="group bg-white rounded-2xl border border-slate-100 overflow-hidden hover:shadow-2xl hover:shadow-slate-100 transition-all duration-500 section-reveal"
+                    style="animation-delay: 0.3s;">
+                    <div class="aspect-[16/10] overflow-hidden bg-gradient-to-br from-rose-400 to-pink-500 relative">
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&auto=format&fit=crop&q=80"
+                            alt="TMS Equipment"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 mix-blend-overlay opacity-70">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="px-3 py-1 rounded-full bg-rose-100 text-rose-700 text-xs font-bold">TMS
+                                Therapy</span>
+                            <span class="text-slate-400 text-sm">Jan 5, 2026</span>
+                        </div>
+                        <h3
+                            class="text-xl font-display font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">
+                            Choosing the Right TMS Equipment for Your Practice
+                        </h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                            A comprehensive comparison of TMS devices and what to consider when investing in equipment
+                            for your clinic.
+                        </p>
+                        <a href="#"
+                            class="inline-flex items-center gap-2 text-brand-600 font-medium text-sm hover:gap-3 transition-all">
+                            Read More
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article
+                    class="group bg-white rounded-2xl border border-slate-100 overflow-hidden hover:shadow-2xl hover:shadow-slate-100 transition-all duration-500 section-reveal"
+                    style="animation-delay: 0.4s;">
+                    <div
+                        class="aspect-[16/10] overflow-hidden bg-gradient-to-br from-indigo-400 to-violet-500 relative">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&q=80"
+                            alt="Team Training"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 mix-blend-overlay opacity-70">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span
+                                class="px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold">Practice
+                                Growth</span>
+                            <span class="text-slate-400 text-sm">Dec 28, 2025</span>
+                        </div>
+                        <h3
+                            class="text-xl font-display font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">
+                            Scaling Your Practice: From Solo to Multi-Provider
+                        </h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                            Strategic insights on expanding your mental health practice while maintaining quality care.
+                        </p>
+                        <a href="#"
+                            class="inline-flex items-center gap-2 text-brand-600 font-medium text-sm hover:gap-3 transition-all">
+                            Read More
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article
+                    class="group bg-white rounded-2xl border border-slate-100 overflow-hidden hover:shadow-2xl hover:shadow-slate-100 transition-all duration-500 section-reveal"
+                    style="animation-delay: 0.5s;">
+                    <div class="aspect-[16/10] overflow-hidden bg-gradient-to-br from-brand-400 to-blue-500 relative">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&auto=format&fit=crop&q=80"
+                            alt="Social Media"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 mix-blend-overlay opacity-70">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span
+                                class="px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-bold">Marketing</span>
+                            <span class="text-slate-400 text-sm">Dec 20, 2025</span>
+                        </div>
+                        <h3
+                            class="text-xl font-display font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">
+                            Social Media Strategies for Mental Health Providers
+                        </h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                            Navigate the unique challenges of marketing mental health services on social platforms
+                            effectively.
+                        </p>
+                        <a href="#"
+                            class="inline-flex items-center gap-2 text-brand-600 font-medium text-sm hover:gap-3 transition-all">
+                            Read More
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Load More -->
+            <div class="text-center mt-12 section-reveal">
+                <button
+                    class="px-8 py-4 bg-white text-slate-900 rounded-2xl font-bold border border-slate-200 hover:border-brand-300 hover:shadow-lg transition-all">
+                    Load More Articles
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-20 relative">
+        <div class="max-w-[800px] mx-auto px-6">
+            <div
+                class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden section-reveal">
+                <div class="absolute inset-0">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-500/20 rounded-full blur-[80px]"></div>
+                    <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/20 rounded-full blur-[80px]"></div>
+                </div>
+                <div class="relative z-10">
+                    <div
+                        class="w-16 h-16 mx-auto rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-display font-bold text-white mb-4">
+                        Stay Updated with Our Newsletter
+                    </h2>
+                    <p class="text-slate-400 mb-8 max-w-md mx-auto">
+                        Get the latest insights, tips, and industry updates delivered directly to your inbox.
+                    </p>
+                    <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                        <input type="email" placeholder="Enter your email"
+                            class="flex-1 px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-slate-400 focus:border-brand-400 focus:ring-2 focus:ring-brand-400/20 outline-none">
+                        <button type="submit"
+                            class="px-6 py-3 bg-white text-slate-900 rounded-xl font-bold hover:bg-brand-50 transition-all whitespace-nowrap">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100 py-12">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-4">
+                    <img src="https://img1.wsimg.com/isteam/ip/f791d9b9-2f6c-4539-b9b3-61b4c8a8a446/Blue%20Minimalist%20Brain%20Bulb%20Logo%20Transparent.png/:/rs=w:206,h:206,cg:true,m/cr=w:206,h:206/qt=q:95"
+                        alt="MyKohi Logo" class="h-12">
+                    <span class="text-slate-400 text-sm">© 2026 MyKohi. All rights reserved.</span>
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="index.html" class="text-slate-500 hover:text-brand-600 text-sm transition-colors">Home</a>
+                    <a href="about.html" class="text-slate-500 hover:text-brand-600 text-sm transition-colors">About</a>
+                    <a href="marketing.html"
+                        class="text-slate-500 hover:text-brand-600 text-sm transition-colors">Marketing</a>
+                    <a href="contact.html"
+                        class="text-slate-500 hover:text-brand-600 text-sm transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll Animations -->
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
