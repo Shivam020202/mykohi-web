@@ -131,6 +131,17 @@
             transition: transform 1s;
         }
     </style>
+
+    <style>
+        .animate-reveal {
+            opacity: 0;
+            animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes reveal {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 
 <body class="bg-[#f8fafc] text-slate-800 antialiased overflow-x-hidden selection:bg-brand-500 selection:text-white">
@@ -179,7 +190,7 @@
                         </svg>
                     </button>
                     <div
-                        class="absolute top-full right-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-slate-100 overflow-hidden hidden group-hover:block">
+                        class="absolute top-full right-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-slate-100 overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0">
                         <a href="treatment-fund.html"
                             class="block px-4 py-3 text-sm text-slate-600 hover:bg-slate-50 hover:text-brand-600 transition-colors">Treatment
                             Fund</a>
